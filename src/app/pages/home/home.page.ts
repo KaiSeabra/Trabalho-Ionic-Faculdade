@@ -33,11 +33,11 @@ import { arrowForward } from 'ionicons/icons';
     IonCardContent,
     IonButton,
     IonIcon,
-    RouterLink, // Importe o RouterLink
+    RouterLink, 
   ],
 })
 export class HomePage {
   constructor() {
-    addIcons({ arrowForward }); // Adicione o ícone
+    addIcons({ arrowForward }); 
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common'; // Para NgIf
-import { ActivatedRoute } from '@angular/router'; // Para pegar o ID da URL
+import { CommonModule } from '@angular/common'; 
+import { ActivatedRoute } from '@angular/router'; 
 import {
   IonHeader,
   IonToolbar,
@@ -21,7 +21,7 @@ import {
 } from '@ionic/angular/standalone';
 import { ApiService } from 'src/app/services/api.service';
 
-// Importando nossos pipes!
+
 import { StatusColorPipe } from 'src/app/pipes/status-color-pipe';
 import { GenderIconPipe } from 'src/app/pipes/gender-icon-pipe';
 
@@ -31,7 +31,7 @@ import { GenderIconPipe } from 'src/app/pipes/gender-icon-pipe';
   styleUrls: ['./character-detail.page.scss'],
   standalone: true,
   imports: [
-    CommonModule, // <-- Importe
+    CommonModule, 
     IonHeader,
     IonToolbar,
     IonTitle,
@@ -48,8 +48,8 @@ import { GenderIconPipe } from 'src/app/pipes/gender-icon-pipe';
     IonBadge,
     IonIcon,
     IonSkeletonText,
-    StatusColorPipe, // <-- Importe o Pipe 1
-    GenderIconPipe,  // <-- Importe o Pipe 2
+    StatusColorPipe, 
+    GenderIconPipe,  
   ],
 })
 export class CharacterDetailPage implements OnInit {
@@ -57,12 +57,11 @@ export class CharacterDetailPage implements OnInit {
   isLoading = true;
 
   constructor(
-    private route: ActivatedRoute, // Injetado
-    private apiService: ApiService   // Injetado
+    private route: ActivatedRoute, 
+    private apiService: ApiService   
   ) {}
 
   ngOnInit() {
-    // Pega o parâmetro 'id' da URL
     const characterId = this.route.snapshot.paramMap.get('id');
 
     if (characterId) {

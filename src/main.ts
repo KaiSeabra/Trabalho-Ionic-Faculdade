@@ -3,7 +3,7 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { RouteReuseStrategy, provideRouter } from '@angular/router';
 import { IonicRouteStrategy, provideIonicAngular } from '@ionic/angular/standalone';
 
-// Importe as rotas que vamos criar e o provider do HttpClient
+
 import { routes } from './app/app.routes';
 import { provideHttpClient } from '@angular/common/http';
 
@@ -18,9 +18,9 @@ bootstrapApplication(AppComponent, {
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     
-    // Adicione os providers aqui
+    
     provideIonicAngular(),
     provideRouter(routes),
-    provideHttpClient(), // <-- Adicione esta linha
+    provideHttpClient(), 
   ],
 });

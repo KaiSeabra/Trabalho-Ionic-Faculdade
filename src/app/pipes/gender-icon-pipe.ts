@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'genderIcon',
-  standalone: true, // Importante: pipe standalone
+  standalone: true, 
 })
 export class GenderIconPipe implements PipeTransform {
   transform(value: string): string {

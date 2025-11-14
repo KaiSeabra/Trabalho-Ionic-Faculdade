@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common'; // Necessário para NgIf e NgFor
+import { CommonModule } from '@angular/common'; 
 import { RouterLink } from '@angular/router';
 import {
   IonHeader,
@@ -17,7 +17,7 @@ import {
   IonBackButton,
 } from '@ionic/angular/standalone';
 import { InfiniteScrollCustomEvent } from '@ionic/core';
-import { ApiService } from 'src/app/services/api.service'; // Nosso Serviço
+import { ApiService } from 'src/app/services/api.service'; 
 
 @Component({
   selector: 'app-characters',
@@ -25,8 +25,8 @@ import { ApiService } from 'src/app/services/api.service'; // Nosso Serviço
   styleUrls: ['./characters.page.scss'],
   standalone: true,
   imports: [
-    CommonModule, // <-- Importe
-    RouterLink,   // <-- Importe
+    CommonModule, 
+    RouterLink,   
     IonHeader,
     IonToolbar,
     IonTitle,
@@ -57,18 +57,14 @@ export class CharactersPage implements OnInit {
     this.apiService.getCharacters(this.currentPage).subscribe({
       next: (res) => {
         this.isLoading = false;
-        // Adiciona os novos resultados ao array existente
         this.characters = [...this.characters, ...res.results];
         
-        // Informa ao InfiniteScroll que a carga terminou
         if (event) {
           (event as InfiniteScrollCustomEvent).target.complete();
         }
         
-        // Prepara para a próxima página
         this.currentPage++;
 
-        // Desativa o infinite scroll se não houver mais páginas
         if (!res.info.next) {
           if (event) (event as InfiniteScrollCustomEvent).target.disabled = true;
         }

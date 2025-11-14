@@ -14,7 +14,6 @@
     </ion-toolbar>
   </ion-header>
 
-  <!-- Skeleton (Carregamento) -->
   <ion-list *ngIf="isLoading">
     <ion-item *ngFor="let i of [1,2,3,4,5]">
       <ion-avatar slot="start">
@@ -31,7 +30,6 @@
     </ion-item>
   </ion-list>
 
-  <!-- Lista de Personagens -->
   <ion-list *ngIf="!isLoading">
     <ion-item 
       *ngFor="let char of characters" 
@@ -48,7 +46,6 @@
     </ion-item>
   </ion-list>
 
-  <!-- Scroll Infinito -->
   <ion-infinite-scroll (ionInfinite)="loadCharacters($event)">
     <ion-infinite-scroll-content
       loadingSpinner="bubbles"
