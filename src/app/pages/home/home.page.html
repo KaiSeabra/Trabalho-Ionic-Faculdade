@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>
+      App Rick & Morty
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">App Rick & Morty</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="container">
+    <ion-card>
+      <!-- CORREÇÃO: URL da imagem estava formatada como Markdown. Agora está correta. -->
+      <img alt="Rick and Morty" src="https://rickandmortyapi.com/api/character/avatar/1.jpeg" />
+      <ion-card-header>
+        <ion-card-title>Bem-vindo!</ion-card-title>
+        <ion-card-subtitle>Wubba Lubba Dub Dub!</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        Este é um app de exemplo feito com Ionic/Angular (standalone) para explorar a API do Rick and Morty.
+      </ion-card-content>
+      
+      <!-- Botão para navegar para a lista de personagens -->
+      <ion-button expand="block" [routerLink]="['/characters']" color="secondary">
+        Ver Personagens
+        <ion-icon slot="end" name="arrow-forward"></ion-icon>
+      </ion-button>
+    </ion-card>
+  </div>
+</ion-content>

@@ -1,0 +1,59 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Personagens</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Personagens</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Skeleton (Carregamento) -->
+  <ion-list *ngIf="isLoading">
+    <ion-item *ngFor="let i of [1,2,3,4,5]">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <h3>
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- Lista de Personagens -->
+  <ion-list *ngIf="!isLoading">
+    <ion-item 
+      *ngFor="let char of characters" 
+      [routerLink]="['/characters', char.id]" 
+      button 
+      detail>
+      <ion-avatar slot="start">
+        <img [src]="char.image" alt="char.name" />
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ char.name }}</h2>
+        <p>{{ char.species }} - {{ char.origin.name }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- Scroll Infinito -->
+  <ion-infinite-scroll (ionInfinite)="loadCharacters($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Carregando mais dados...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

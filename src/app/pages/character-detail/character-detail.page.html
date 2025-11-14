@@ -1,0 +1,54 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/characters"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ character?.name || 'Carregando...' }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- Skeleton (Carregamento) -->
+  <div *ngIf="isLoading" class="ion-padding">
+    <ion-skeleton-text animated style="width: 100%; height: 250px;"></ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 60%; margin-top: 10px;"></ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 40%;"></ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 80%;"></ion-skeleton-text>
+  </div>
+
+  <!-- Conteúdo do Personagem -->
+  <div *ngIf="character && !isLoading">
+    <ion-card>
+      <img [src]="character.image" [alt]="character.name" />
+      <ion-card-header>
+        <ion-card-title>{{ character.name }}</ion-card-title>
+        <ion-card-subtitle>{{ character.species }}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item lines="none">
+          <ion-label>Status</ion-label>
+          <!-- 1º PIPE USADO -->
+          <ion-badge [color]="character.status | statusColor" slot="end">
+            {{ character.status }}
+          </ion-badge>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-label>Gênero</ion-label>
+          <!-- 2º PIPE USADO -->
+          <ion-icon [name]="character.gender | genderIcon" slot="end" size="large"></ion-icon>
+        </ion-item>
+        
+        <ion-item lines="none">
+          <ion-label>Origem</ion-label>
+          <div slot="end" class="ion-text-end">{{ character.origin.name }}</div>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-label>Última Localização</ion-label>
+          <div slot="end" class="ion-text-end">{{ character.location.name }}</div>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
